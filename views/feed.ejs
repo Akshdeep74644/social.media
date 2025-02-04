@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posty Feed</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900">
+    <div class="w-full p-10  h-full text-[#dedede]  bg-gray-900 ">
+    <div class="all_post mt-1 w-full flex justify-center items-center flex-col">
+      <div class="w-full flex justify-between items-center">
+        <a href="/" class="text-2xl">Home</a>
+        <h1 class="text-2xl">Feed</h1>
+        <div>
+          <a href="/profile" class="p-2 mr-5 rounded-lg bg-blue-800">Profile</a>
+          <a href="/logout" class="p-2 rounded-lg bg-red-800">Logout</a>
+        </div>
+      </div>
+        
+        <div class="post_container mt-20 flex flex-wrap w-full justify-center items-center gap-5 mt-5">
+          <% allpost.reverse().forEach((post)=>{ %>
+            <div class="post border-1 flex flex-col gap-3 bg-zinc-800 rounded-2xl border-zinc-600 w-[70%] p-5">
+            <div class="flex justify-between">
+            <h1 class="text-xl text-blue-600">By <%= post.user.username%></h1>
+            </div>
+            <p><%= post.content%></p>
+            <div class="flex gap-5">
+              <div class="flex gap-5">
+                <div>
+                  <a href="/like/feed/<%= post._id %>"  class="text-blue-500">Like</a>
+                  <span><%= post.like.length %></span>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
